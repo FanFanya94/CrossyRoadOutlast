@@ -1,3 +1,7 @@
 Library/
 Logs/
 Packages/
+obj/
+.vs/
+Assembly-CSharp.csproj
+Crossy Road Outlast.sln
