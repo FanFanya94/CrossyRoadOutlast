@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Water
+  - Obstacle
+  - Killer
+  - PlayerModel
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -13,8 +19,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Checkers
+  - Enemies
   - 
   - 
   - 
