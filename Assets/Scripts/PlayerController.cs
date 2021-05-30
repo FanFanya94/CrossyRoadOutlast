@@ -122,7 +122,6 @@ public class PlayerController : MonoBehaviour
 
     private void EasedMove() // Smoothly moves player to a new position 
     {
-        //transform.position = Vector3.Lerp(transform.position, targetPos, movingSpeed);
         transform.position = Vector3.Lerp(transform.position, targetPos, movingSpeed * Time.deltaTime);
     }
 
