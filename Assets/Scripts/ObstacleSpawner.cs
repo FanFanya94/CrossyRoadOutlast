@@ -8,7 +8,7 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private int maxObstacleCount;
     [SerializeField] private int obstacleCount = 0;
 
-    [SerializeField] private GameObject obstaclePrefab;
+    [SerializeField] private GameObject[] obstaclePrefabs;
 
     private GameObject[] childTiles;
 
@@ -20,9 +20,10 @@ public class ObstacleSpawner : MonoBehaviour
 
         FillArrayWithChilds(childTiles); 
 
-        ShuffleArray(childTiles); 
+        ShuffleArray(childTiles);
+        ShuffleArray(obstaclePrefabs);
 
-        SpawnObstacleRandomly(obstacleCount, childTiles, obstaclePrefab); 
+        SpawnObstacleRandomly(obstacleCount, childTiles, obstaclePrefabs); 
     }
 
     private void FillArrayWithChilds(GameObject[] array) // Fill childTiles array with child objects
@@ -33,12 +34,25 @@ public class ObstacleSpawner : MonoBehaviour
         }
     }
 
-    private void SpawnObstacleRandomly(int count, GameObject[] objectsArray, GameObject prefabToSpawn) // Spawn obstacle at random tile position
+    //private void SpawnObstacleRandomly(int count, GameObject[] objectsArray, GameObject[] prefabsArray) // Spawn obstacle at random tile position
+    //{
+    //    for (int i = 0; i < count; i++)
+    //    {
+    //        GameObject obs = Instantiate(prefabsArray[i], objectsArray[i].transform.position, Quaternion.identity);
+    //        obs.transform.SetParent(objectsArray[i].transform);
+    //    }
+    //}
+
+    private void SpawnObstacleRandomly(int count, GameObject[] tilesArray, GameObject[] prefabsArray) // Spawn obstacle at random tile position
     {
-        for (int i = 0; i < count; i++)
+        for (int i = 0, j = 0; i < count; i++, j++)
         {
-            GameObject obs = Instantiate(prefabToSpawn, objectsArray[i].transform.position, Quaternion.identity);
-            obs.transform.SetParent(objectsArray[i].transform);
+            if (j >= prefabsArray.Length)
+            {
+                j = 0;
+            }
+            GameObject obs = Instantiate(prefabsArray[j], tilesArray[i].transform.position, Quaternion.identity);
+            obs.transform.SetParent(tilesArray[i].transform);
         }
     }
 

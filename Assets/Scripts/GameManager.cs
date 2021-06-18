@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject startMenu;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject cameraSpotLight;
+    [SerializeField] private GameObject globalVolume;
 
     [HideInInspector] public static GameManager instance;
     [HideInInspector] public GameState gameState;
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         gameState = GameState.Playing;
         startMenu.gameObject.SetActive(false);
+        Invoke("EnableNightVision", 1f);
     }
 
     public void GameOver()
@@ -63,5 +66,12 @@ public class GameManager : MonoBehaviour
     {
         score++;
         scoreText.text = "SCORE: " + score;
+    }
+
+    public void EnableNightVision()
+    {
+        FindObjectOfType<AudioManager>().PlaySound("NightVision");
+        globalVolume.SetActive(true);
+        cameraSpotLight.SetActive(true);
     }
 }
