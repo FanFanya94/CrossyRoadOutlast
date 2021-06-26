@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private Rigidbody rb;
 
-    private GameObject targetTile;
+    [HideInInspector] public GameObject targetTile;
     private Vector3 targetPos;
 
     [SerializeField] private float movingSpeed;
@@ -135,40 +135,6 @@ public class PlayerController : MonoBehaviour
         if (isMoving)
         {
             playerAnimator.SetTrigger("Jump");
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Water" && GameManager.instance.gameState == GameState.Playing)
-        {
-            GameManager.instance.GameOver();
-            rb.AddForce(Vector3.down * 1000, ForceMode.Impulse);
-            GetComponent<Collider>().enabled = false;
-            rb.constraints = RigidbodyConstraints.FreezePositionX;
-            rb.constraints = RigidbodyConstraints.FreezePositionZ;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Killer" && GameManager.instance.gameState == GameState.Playing)
-        {
-            GameManager.instance.GameOver();
-            transform.SetParent(targetTile.transform);
-        }
-
-        if (other.gameObject.tag == "Enemy" && GameManager.instance.gameState == GameState.Playing)
-        {
-            GameManager.instance.GameOver();
-
-            transform.LookAt(other.transform);
-
-            other.transform.LookAt(transform.position);
-            other.gameObject.GetComponent<Enemy>().StartCoroutine("KillPlayer");
-
-            transform.GetChild(0).gameObject.SetActive(false);
-            transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 }

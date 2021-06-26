@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6904017956502723553}
   - component: {fileID: 3622417939943326063}
   - component: {fileID: 3644378302460881417}
+  - component: {fileID: 1722225237748841483}
   m_Layer: 0
   m_Name: Grass_tile_model
   m_TagString: Ground
@@ -111,6 +112,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1722225237748841483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2326458748057408311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae030b66ffa04c4199ac3f186533d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundName: GrassLanding
 --- !u!1 &2831231246362380443
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7227035377936257050}
   m_Layer: 0
-  m_Name: Grass_Tile
+  m_Name: Grass_Tile_Active
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

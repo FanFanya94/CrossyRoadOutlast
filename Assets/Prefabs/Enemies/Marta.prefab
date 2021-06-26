@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingSpeed: 0
+  _hitSoundName: SectarianHit
   movingDirection: {x: 0, y: 0, z: 0}
   enemyCurrentRotation: {x: 0, y: 0, z: 0}
   isHitting: 0

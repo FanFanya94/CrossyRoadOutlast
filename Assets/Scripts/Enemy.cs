@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [HideInInspector] public float movingSpeed;
+    [SerializeField] private string _hitSoundName;
     public Vector3 movingDirection;
     public Vector3 enemyCurrentRotation;
     public bool isHitting = false;
@@ -58,6 +59,7 @@ public class Enemy : MonoBehaviour
 
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(true);
+        FindObjectOfType<AudioManager>().PlaySound(_hitSoundName);
 
         yield return new WaitForSeconds(0.25f);
 
